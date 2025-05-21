@@ -1,8 +1,8 @@
 # README COPIATO E CHE DEVO MODIFICARE
 
-# Quantization Large-scale for AI Models
+# Benchmarking pruning techniques to reduce the energy impact of LLM models
 
-This academic thesis investigates the impact of Deep Learning model compression techniques, specifically **post-training** quantization to INT8 and INT4 precision, on both model efficiency and environmental sustainability. The research analyzes a broad selection of models across various tasks like speech processing, computer vision, and text generation, using a GPU-accelerated setup. Key findings highlight the trade-offs between accuracy, model size, inference speed, and energy consumption, revealing that INT4 compression, while reducing model size, can sometimes increase energy usage depending on hardware optimization, such as the NVIDIA RTX 4090 favoring INT8 operations. The study underscores the crucial relationship between hardware capabilities and the effectiveness of quantization techniques in achieving Green AI objectives.
+This repo investigates the impact of LLM model pruning techniques, specifically LLMPruner, on both model efficiency and environmental sustainability. The research analyzes a selection of open-source pre-trained LLM models from huggingface. The results showed that an average reduction of 20\% in parameters can result in energy savings on the order of 15\%, but with an average accuracy loss of 12\%, which is not negligible and very model- and task-dependent. In some specific scenarios the approach proved more effective, but overall the benefits were not substantial enough to make the method immediately applicable on a large scale without further optimization.
 
 ---
 
@@ -11,7 +11,7 @@ This academic thesis investigates the impact of Deep Learning model compression 
 Clone the repository and install manually:
 
 ```bash
-git clone https://github.com/lonelygunter/greenai
+git clone https://github.com/Cyber-Vadok/GreenPruning/
 cd quantization-toolkit
 ```
 
