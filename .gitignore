@@ -170,5 +170,32 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 
-Vecchio/
-venv/
+# Ignore virtual enviroments
+.old_venv
+.venv
+
+# Ignore for lm-evaluation-harness
+lm_cache
+.idea
+*.egg-info
+
+# Ignore outputs
+results
+radar
+figures
+inference_outputs
+outputs
+codecarbon
+
+# Ignore logs
+nohup_logs
+*.log
+wandb
+
+# Ignore dotfiles
+.gradio
+.vscode
+
+# Ignore experiments
+experiments
+layer_importance
