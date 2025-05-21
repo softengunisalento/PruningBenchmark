@@ -1,0 +1,45 @@
+#!/bin/bash
+export PYTHONPATH='.'
+
+model_name=$1
+base_model=$2 # e.g., baffo32/decapoda-research-llama-7B-hf
+tune_ckpt_name=$3 # tune_log/{name} folder
+prune_ckpt=$4 # prune_log/{name} folder
+epoch=$5
+
+# Lista dei task disponibili
+tasks=("openbookqa" "arc_easy" "winogrande" "hellaswag" "arc_challenge" "piqa" "boolq")
+
+# Dizionario per mappare i task ai rispettivi batch size
+declare -A batch_sizes
+batch_sizes["openbookqa"]=1 #23149 ERA 128
+batch_sizes["arc_easy"]=1 #23933 ERA 64
+batch_sizes["winogrande"]=1 #22817
+batch_sizes["hellaswag"]=64 #22761
+batch_sizes["arc_challenge"]=1 #21433 ERA 64
+batch_sizes["piqa"]=1 #21967
+batch_sizes["boolq"]=1 #23135
+
+# Prepara il checkpoint per l'adattatore
+cp $tune_ckpt_name/adapter_config.json $tune_ckpt_name/checkpoint-$epoch/
+mv $tune_ckpt_name/checkpoint-$epoch/pytorch_model.bin $tune_ckpt_name/checkpoint-$epoch/adapter_model.bin
+
+# Itera sui task
+for i in $(seq 1 10);
+do
+    for task in "${tasks[@]}"; 
+    do
+        # Ottieni il batch size corretto per il task corrente
+        batch_size=${batch_sizes[$task]}
+        
+        python lm-evaluation-harness/main.py \
+            --model hf-causal-experimental \
+            --model_args checkpoint=$prune_ckpt/pytorch_model.bin,peft=$tune_ckpt_name/checkpoint-$epoch,config_pretrained=$base_model \
+            --tasks $task \
+            --device cuda:0 \
+            --output_path results/pruned/${model_name}/${task}/${i}.json \
+            --no_cache \
+            --batch_size $batch_size
+    done
+done
+
