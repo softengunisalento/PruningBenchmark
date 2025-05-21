@@ -102,3 +102,10 @@ The inference speed improvements are **task and architecture dependent**. Quanti
 ### Size vs Performance
 
 Sentence transformers such as `all-MiniLM-L6-v2` show **optimal trade-offs**, achieving **\~75% size reduction** with minimal impact on accuracy or speed. These results make such models excellent candidates for deployment in edge environments or resource-constrained settings.
+
+## Credits
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. 
+It includes code from:
+ * [Torch-Pruning](https://github.com/VainF/Torch-Pruning) (MIT License)
+ * [LLM-Pruner](https://github.com/horseee/LLM-Pruner) (Apache 2.0 License)
+ * [lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness) (MIT License)
