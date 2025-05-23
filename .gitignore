@@ -205,5 +205,4 @@ experiments
 layer_importance
 
 # other stuff
-scripts/notifica.sh
-
+src/scripts/notifica.sh
