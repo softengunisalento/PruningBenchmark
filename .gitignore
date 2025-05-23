@@ -187,6 +187,10 @@ inference_outputs
 outputs
 codecarbon
 
+# ignore weights
+src/prune_log
+src/tune_log
+
 # Ignore logs
 nohup_logs
 *.log
@@ -199,3 +203,7 @@ wandb
 # Ignore experiments
 experiments
 layer_importance
+
+# other stuff
+scripts/notifica.sh
+
