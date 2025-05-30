@@ -109,3 +109,36 @@ It includes code from:
  * [Torch-Pruning](https://github.com/VainF/Torch-Pruning) (MIT License)
  * [LLM-Pruner](https://github.com/horseee/LLM-Pruner) (Apache 2.0 License)
  * [lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness) (MIT License)
+
+## Miglioramento torch-pruning
+Aggiunta parte per ignorare i layer iniziali e finali
+```
+    layer_names = [name for name, _ in model.named_modules() if name.endswith(("self_attn", "mlp"))]
+    # *2 = self_attn + mlp
+    start_idx = 0
+    end_idx = len(layer_names)
+    if args.ignore_first_x_layers > 0:
+        start_idx = args.ignore_first_x_layers * 2
+    if args.ignore_last_x_layers > 0:
+        end_idx -= args.ignore_last_x_layers * 2
+    layers_to_process = layer_names[start_idx:end_idx]
+```
+
+## Miglioramento lm-eval-harness
+Aggiunto Codecarbon
+
+```
+    tracker.start()
+        print("Running", reqtype, "requests")
+        resps = getattr(lm, reqtype)([req.args for req in reqs])
+        
+        resps = [
+            x if req.index is None else x[req.index] for x, req in zip(resps, reqs)
+        ]
+
+        for resp, (i, task_name, doc, doc_id) in zip(resps, requests_origin[reqtype]):
+            process_res_queue[(task_name, doc_id)].append((i, resp))
+
+    tracker.stop()
+```
+
