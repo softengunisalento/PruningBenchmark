@@ -4,6 +4,20 @@ This repo investigates the impact of LLM model pruning techniques, specifically 
 
 ---
 
+## Methodology
+
+The figure below illustrates the four main stages of the research pipeline:
+
+1. **Model Selection** – LLMs under 9B parameters were selected from HuggingFace based on popularity and relevance for SMEs.  
+2. **Pruning** – Models were compressed using Torch-Pruning with Taylor importance.  
+3. **Retraining** – LoRA Fine-tuning was performed to recover potential accuracy loss.  
+4. **Benchmarking** – Models were evaluated for accuracy and energy consumption on seven commonsense reasoning tasks.
+
+<a href="./assets/metodologia.drawio.svg">
+  <img src="./assets/metodologia.drawio.svg" alt="Research methodology overview" width="1000"/>
+</a>
+
+
 ## Usage
 
 Clone the repository
@@ -19,23 +33,13 @@ cd GreenPruning/
 pip install -r requirements.txt
 ```
 
-Here's a simple example of applying PTQ to a PyTorch model:
+The [`src/scripts`](./src/scripts) folder contains the shell scripts used to replicate the results for each model.
 
-```python
-if args.quantization_bits == 4:
-  model = AutoModelForMaskedLM.from_pretrained(
-    MODEL_ID,
-    load_in_4bit=True,
-    device_map=device
-  )
-elif args.quantization_bits == 8:
-  model = AutoModelForMaskedLM.from_pretrained(
-    MODEL_ID,
-    load_in_8bit=True,
-    device_map=device
-  )
-else:
-  raise ValueError("Only 4-bit and 8-bit quantization are supported.")
+To run an experiment, simply navigate to the `src` directory and execute the corresponding script. For example, to run the pipeline on **LLaMA 3.1**:
+
+```bash
+cd src/
+bash scripts/llama3-1.sh
 ```
 
 ---
@@ -93,9 +97,9 @@ Radars represents, respectively, the accuracy and energy consumption of the eval
 
 <br><br>
 
-## Miglioramento torch-pruning
-Aggiunta parte per ignorare i layer iniziali e finali
-```
+## Changes to torch-pruning
+Added support for skipping the first and last layers during pruning.
+```python
     layer_names = [name for name, _ in model.named_modules() if name.endswith(("self_attn", "mlp"))]
     # *2 = self_attn + mlp
     start_idx = 0
@@ -107,10 +111,10 @@ Aggiunta parte per ignorare i layer iniziali e finali
     layers_to_process = layer_names[start_idx:end_idx]
 ```
 
-## Miglioramento lm-eval-harness
-Aggiunto Codecarbon
+## Changes lm-eval-harness
+Integrated CodeCarbon to track energy consumption during model inference.
 
-```
+```python
     tracker.start()
         print("Running", reqtype, "requests")
         resps = getattr(lm, reqtype)([req.args for req in reqs])
