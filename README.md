@@ -57,18 +57,15 @@ The evaluation of model quantization highlights significant improvements in mode
 
 ### Accuracy
 
-[![Accuracy Table](./assets/my-table.svg)](./assets/my-table.svg)
-![Model Accuracy Table](images/table.svg)
+<a href="./assets/my-table.svg">
+  <img src="./assets/accuracy.svg" alt="Accuracy Table" width="1000"/>
+</a>
 
 ### Energy Consumption
 
-In **sentence similarity** tasks, INT8 quantization offers clear environmental advantages. For several models, energy consumption is reduced by up to 50% with negligible loss in accuracy. `all-mpnet-base-v2`, for example, reduces energy usage to 92.78% while maintaining strong accuracy (Table \[tab\:sen\_tra]).
-
-| Model             | INT8 mean MSE | INT4 mean MSE | INT8 Energy % | INT4 Energy % |
-| ----------------- | ------------- | ------------- | ------------- | ------------- |
-| all-MiniLM-L6-v2  | 1.18e-7       | 8.43e-7       | 100.06%       | 111.10%       |
-| all-mpnet-base-v2 | 3.09e-7       | 2.17e-7       | 92.78%        | 119.35%       |
-
+<a href="./assets/my-table.svg">
+  <img src="./assets/energy.svg" alt="Accuracy Table" width="1000"/>
+</a>
 
 ## Miglioramento torch-pruning
 Aggiunta parte per ignorare i layer iniziali e finali
