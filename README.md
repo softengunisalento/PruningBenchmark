@@ -53,17 +53,50 @@ The evaluation of model quantization highlights significant improvements in mode
 
 ## Results Summary
 
-### Accuracy
+The results are presented in the following sections through both **tables** and **radar charts**, offering a comprehensive view of model behavior before and after pruning.
 
-<a href="./assets/my-table.svg">
-  <img src="./assets/accuracy.svg" alt="Accuracy Table" width="1000"/>
+The section [**Accuracy**](#accuracy) reports the performance of each model on seven commonsense reasoning benchmarks, while [**Energy Consumption**](#energy-consumption) shows the corresponding energy usage expressed in watt-hours (Wh). In both sections, results are provided for models in their original and pruned forms.
+
+Tables present the accuracy and energy consumption values across the following datasets: ARC-Challenge (ARCC), ARC-Easy (ARCE), BoolQ, HellaSwag (Hella), PIQA, OpenBookQA (OBQA), and WinoGrande (Wino). The last two columns in each table indicate the average value across datasets (Avg.) and the corresponding Ratio, defined as the average value of the pruned model divided by that of the vanilla model. Each model is represented by a pair of rows, enabling a direct comparison between the original and compressed versions.
+
+Radars represents, respectively, the accuracy and energy consumption of the evaluated models across the same seven datasets. To enable consistent visual comparison among models of different sizes, values have been normalized per task. For each model, both the vanilla (blue line) and pruned (orange line) configurations are displayed in the same radar plot, illustrating their relative performance across all tasks.
+
+### Accuracy
+**Table 1** : Accuracy of original and compressed models on commonsense datasets.
+
+<a href="./assets/accuracy.svg">
+  <img src="./assets/accuracy.svg" alt="Accuracy Table" width="1000""/>
 </a>
 
+<!-- Vertical spacer: 4 lines -->
+<br><br><br><br>
+
+**Figure 1** : Normalized radar charts showing the accuracy of original models (blue) and pruned models (orange) across the seven benchmarking datasets.
+
+<a href="./assets/radar_accuracy.svg">
+  <img src="./assets/radar_accuracy.svg" alt="Radar Accuracy Table" width="1000"/>
+</a>
+
+<br><br>
+
 ### Energy Consumption
+**Table 2** : Energy consumption (in Wh) of original and pruned models during the benchmarking phase.
 
 <a href="./assets/my-table.svg">
   <img src="./assets/energy.svg" alt="Accuracy Table" width="1000"/>
 </a>
+
+<!-- Vertical spacer: 4 lines -->
+<br><br><br><br>
+
+
+**Figure 2** : Normalized radar charts illustrating the energy consumption (in Wh) of original models (blue) and pruned models (orange) across the seven benchmarking datasets.
+
+<a href="./assets/my-table.svg">
+  <img src="./assets/radar_energy.svg" alt="Accuracy Table" width="1000"/>
+</a>
+
+<br><br>
 
 ## Miglioramento torch-pruning
 Aggiunta parte per ignorare i layer iniziali e finali
