@@ -40,18 +40,13 @@ else:
 
 ---
 
-## Performance Benchmarks
 
-The evaluation of model quantization highlights significant improvements in model efficiency and environmental impact, especially in terms of size reduction, inference speed, and energy consumption, though not without trade-offs in accuracy.
+## Results Summary
 
 ### Test Environment
 
 * **CPU**: AMD Ryzen 9 7900X
 * **GPU**: NVIDIA GeForce RTX 4090
-
----
-
-## Results Summary
 
 The results are presented in the following sections through both **tables** and **radar charts**, offering a comprehensive view of model behavior before and after pruning.
 
