@@ -57,6 +57,9 @@ The evaluation of model quantization highlights significant improvements in mode
 
 ### Accuracy
 
+[![Accuracy Table](./assets/my-table.svg)](./assets/my-table.svg)
+![Model Accuracy Table](images/table.svg)
+
 ### Energy Consumption
 
 In **sentence similarity** tasks, INT8 quantization offers clear environmental advantages. For several models, energy consumption is reduced by up to 50% with negligible loss in accuracy. `all-mpnet-base-v2`, for example, reduces energy usage to 92.78% while maintaining strong accuracy (Table \[tab\:sen\_tra]).
