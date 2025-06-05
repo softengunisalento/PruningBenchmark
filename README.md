@@ -1,8 +1,8 @@
 # README COPIATO E CHE DEVO MODIFICARE
 
-# Benchmarking pruning techniques to reduce the energy impact of LLM models
+# Benchmarking Pruning Techniques to Reduce the Energy Impact of Large Language Models: the Case of _LLMPruner_
 
-This repo investigates the impact of LLM model pruning techniques, specifically LLMPruner, on both model efficiency and environmental sustainability. The research analyzes a selection of open-source pre-trained LLM models from huggingface. The results showed that an average reduction of 20\% in parameters can result in energy savings on the order of 15\%, but with an average accuracy loss of 12\%, which is not negligible and very model- and task-dependent. In some specific scenarios the approach proved more effective, but overall the benefits were not substantial enough to make the method immediately applicable on a large scale without further optimization.
+This repo investigates the impact of LLM model pruning techniques, specifically LLMPruner, on both model efficiency and environmental sustainability. The research analyzes a selection of open-source pre-trained LLM models from huggingface. The results showed that an average reduction of 20\% in parameters can result in energy savings on the order of 10\%, but with an average accuracy loss of 12\%, which is not negligible and very model and task dependent. In some specific scenarios the approach proved more effective, but overall the benefits were not substantial enough to make the method immediately applicable on a large scale without further optimization.
 
 ---
 
