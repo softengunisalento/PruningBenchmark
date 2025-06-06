@@ -6,7 +6,7 @@ This repo investigates the impact of LLM model pruning techniques, specifically 
 
 ## Methodology
 
-The figure below illustrates the four main stages of the research pipeline:
+The figure below illustrates the four main stages of the research methodology:
 
 1. **Model Selection** – LLMs under 9B parameters were selected from HuggingFace based on popularity and relevance for SMEs.  
 2. **Pruning** – Models were compressed using Torch-Pruning with Taylor importance.  
