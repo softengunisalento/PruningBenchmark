@@ -6,20 +6,19 @@ base_model=$2 # e.g., baffo32/decapoda-research-llama-7B-hf
 
 # Lista dei task disponibili
 tasks=("openbookqa" "arc_easy" "winogrande" "hellaswag" "arc_challenge" "piqa" "boolq")
-# tasks=("hellaswag")
 
 # Dizionario per mappare i task ai rispettivi batch size
 declare -A batch_sizes
-batch_sizes["openbookqa"]=1 #23149 ERA 128
-batch_sizes["arc_easy"]=1 #23933 ERA 64
-batch_sizes["winogrande"]=1 #22817
-batch_sizes["hellaswag"]=64 #22761
-batch_sizes["arc_challenge"]=1 #21433 ERA 64
-batch_sizes["piqa"]=1 #21967
-batch_sizes["boolq"]=1 #23135
+batch_sizes["openbookqa"]=1
+batch_sizes["arc_easy"]=1
+batch_sizes["winogrande"]=1
+batch_sizes["hellaswag"]=64
+batch_sizes["arc_challenge"]=1
+batch_sizes["piqa"]=1
+batch_sizes["boolq"]=1
 
 # Itera sui task
-for i in $(seq 6 10);
+for i in $(seq 1 10);
 do
     for task in "${tasks[@]}"; 
     do

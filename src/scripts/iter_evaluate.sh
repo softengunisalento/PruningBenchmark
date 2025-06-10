@@ -12,13 +12,13 @@ tasks=("openbookqa" "arc_easy" "winogrande" "hellaswag" "arc_challenge" "piqa" "
 
 # Dizionario per mappare i task ai rispettivi batch size
 declare -A batch_sizes
-batch_sizes["openbookqa"]=1 #23149 ERA 128
-batch_sizes["arc_easy"]=1 #23933 ERA 64
-batch_sizes["winogrande"]=1 #22817
-batch_sizes["hellaswag"]=64 #22761
-batch_sizes["arc_challenge"]=1 #21433 ERA 64
-batch_sizes["piqa"]=1 #21967
-batch_sizes["boolq"]=1 #23135
+batch_sizes["openbookqa"]=1
+batch_sizes["arc_easy"]=1
+batch_sizes["winogrande"]=1
+batch_sizes["hellaswag"]=64
+batch_sizes["arc_challenge"]=1
+batch_sizes["piqa"]=1
+batch_sizes["boolq"]=1
 
 # Prepara il checkpoint per l'adattatore
 cp $tune_ckpt_name/adapter_config.json $tune_ckpt_name/checkpoint-$epoch/
