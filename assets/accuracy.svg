@@ -24,14 +24,14 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="1.4948513"
-     inkscape:cx="276.61614"
-     inkscape:cy="153.1925"
+     inkscape:cx="183.29582"
+     inkscape:cy="153.19249"
      inkscape:window-width="1920"
      inkscape:window-height="1011"
      inkscape:window-x="0"
      inkscape:window-y="32"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="layer2"
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
@@ -39,10 +39,24 @@
   <defs
      id="defs6774" />
   <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Livello 0">
+    <rect
+       style="fill:#ffffff;stroke-width:0.264583"
+       id="rect1808"
+       width="124.51953"
+       height="54.443539"
+       x="0"
+       y="0.13674"
+       ry="0.41185835" />
+  </g>
+  <g
      inkscape:label="Livello 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-36.901337,-17.208521)">
+     transform="translate(-36.901337,-17.208521)"
+     style="display:inline">
     <path
        style="fill:none;stroke:#000000;stroke-width:0.27348;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1"
        d="M 36.901337,17.345261 H 161.42087"
