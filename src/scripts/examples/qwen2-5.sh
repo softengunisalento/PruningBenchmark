@@ -42,7 +42,7 @@ echo "[FINISH] - Finish Prune and Post-Training."
 echo "[INFO] - The pruned model is at {$prune_ckpt_path/pytorch_model.bin}, and the recovery weight is at {$tune_ckpt_path}/"
 
 epoch=1554
-bash scripts/iter_evaluate.sh $model_name $base_model $tune_ckpt_path $prune_ckpt_path $epoch
+bash scripts/pruned_evaluate.sh $model_name $base_model $tune_ckpt_path $prune_ckpt_path $epoch
 bash scripts/vanilla_evaluate.sh $model_name $base_model
 
 bash scripts/notifica.sh

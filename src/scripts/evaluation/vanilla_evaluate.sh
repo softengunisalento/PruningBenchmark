@@ -1,11 +1,16 @@
 #!/bin/bash
 export PYTHONPATH='.'
 
-model_name=$1
-base_model=$2 # e.g., baffo32/decapoda-research-llama-7B-hf
+base_model=$1 # e.g., baffo32/decapoda-research-llama-7B-hf
 
 # Lista dei task disponibili
 tasks=("openbookqa" "arc_easy" "winogrande" "hellaswag" "arc_challenge" "piqa" "boolq")
+
+for task in "${tasks[@]}";
+do
+    # Crea la cartella per il task se non esiste
+    mkdir -p results/pruned/${base_model}/${task}
+done
 
 # Dizionario per mappare i task ai rispettivi batch size
 declare -A batch_sizes
@@ -29,7 +34,7 @@ do
             --model_args pretrained=$base_model \
             --tasks $task \
             --device cuda:0 \
-            --output_path results/vanilla/${model_name}/${task}/${i}.json \
+            --output_path results/vanilla/${base_model}/${task}/${i}.json \
             --no_cache \
             --batch_size $batch_size
     done

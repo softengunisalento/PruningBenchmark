@@ -14,8 +14,9 @@ python3 pruner.py --pruning_ratio 0.28571428571 \
                  --base_model $base_model \
                  --save_ckpt_log_name $base_model \
                  --max_seq_len 2048 \
-                 --test_after_train \
                  --save_model
+                #  --test_after_train \
+                 
 
 # echo "[FINISH] - Finish Pruning Model"
 

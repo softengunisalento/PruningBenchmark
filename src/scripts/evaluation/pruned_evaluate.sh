@@ -1,14 +1,19 @@
 #!/bin/bash
 export PYTHONPATH='.'
 
-model_name=$1
-base_model=$2 # e.g., baffo32/decapoda-research-llama-7B-hf
-tune_ckpt_name=$3 # tune_log/{name} folder
-prune_ckpt=$4 # prune_log/{name} folder
-epoch=$5
+base_model=$1 # e.g., baffo32/decapoda-research-llama-7B-hf
+tune_ckpt_name=$2 # tune_log/{name} folder
+prune_ckpt=$3 # prune_log/{name} folder
+epoch=$4
 
 # Lista dei task disponibili
 tasks=("openbookqa" "arc_easy" "winogrande" "hellaswag" "arc_challenge" "piqa" "boolq")
+
+for task in "${tasks[@]}";
+do
+    # Crea la cartella per il task se non esiste
+    mkdir -p results/pruned/${base_model}/${task}
+done
 
 # Dizionario per mappare i task ai rispettivi batch size
 declare -A batch_sizes
@@ -37,7 +42,7 @@ do
             --model_args checkpoint=$prune_ckpt/pytorch_model.bin,peft=$tune_ckpt_name/checkpoint-$epoch,config_pretrained=$base_model \
             --tasks $task \
             --device cuda:0 \
-            --output_path results/pruned/${model_name}/${task}/${i}.json \
+            --output_path results/pruned/${base_model}/${task}/${i}.json \
             --no_cache \
             --batch_size $batch_size
     done
