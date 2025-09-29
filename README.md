@@ -3,6 +3,9 @@
 This repo investigates the impact of LLM model pruning techniques, specifically LLMPruner, on both model efficiency and environmental sustainability. The research analyzes a selection of open-source pre-trained LLM models from huggingface. The results showed that an average reduction of 20\% in parameters can result in energy savings on the order of 10\%, but with an average accuracy loss of 12\%, which is not negligible and very model and task dependent. In some specific scenarios the approach proved more effective, but overall the benefits were not substantial enough to make the method immediately applicable on a large scale without further optimization.
 
 ---
+**Note for Reviewer**  
+Please note that when using the GitHub anonymizer, embedded images may not render correctly. 
+All figures are available in the `assets/` folder of the repository.
 
 ## Methodology
 
