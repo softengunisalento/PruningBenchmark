@@ -23,10 +23,10 @@ The figure below illustrates the four main stages of the research methodology:
 
 ## Usage
 
-Clone the repository
+Clone the repository --
 
 ```bash
-git clone https://github.com/Cyber-Vadok/GreenPruning/
+"(command omitted for blind review)"
 ```
 
 Create a venv and install dependencies:
